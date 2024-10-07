@@ -1,5 +1,7 @@
 package com.ccamilofierro.billing.service;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,5 +59,15 @@ public class InvoiceServiceImpl implements InvoiceService {
     @Override
     public List<Invoice> getInvoicesByNit(Long nit) {
         return invoiceRepository.findByInvoicesNit(nit);
+    }
+
+    @Override
+    public List<Invoice> getInvoicesAboveAmount(BigDecimal amount) {
+        return invoiceRepository.findInvoicesAboveAmount(amount);
+    }
+
+    @Override
+    public List<Invoice> getInvoicesInDateRange(LocalDateTime startDate, LocalDateTime endDate) {
+        return invoiceRepository.findInvoicesInDateRange(startDate, endDate);
     }
 }

@@ -1,10 +1,14 @@
 package com.ccamilofierro.billing.controller;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ccamilofierro.billing.model.Invoice;
@@ -54,4 +58,20 @@ public class InvoiceController {
         return ResponseEntity.ok().build();
     }
 
+    @GetMapping("/customer/{nit}")
+    public List<Invoice> getInvoicesByNit(@PathVariable(value = "nit") Long nit) {
+        return invoiceService.getInvoicesByNit(nit);
+    }
+
+    @GetMapping("/amount/{amount}")
+    public List<Invoice> getInvoicesAboveAmount(@PathVariable(value = "amount") BigDecimal amount) {
+        return invoiceService.getInvoicesAboveAmount(amount);
+    }
+
+    @GetMapping("/date-range")
+    public List<Invoice> getInvoicesInDateRange(
+        @RequestParam("startDate") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime startDate,
+        @RequestParam("endDate") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime endDate){ 
+        return invoiceService.getInvoicesInDateRange(startDate, endDate);
+    }
 }
