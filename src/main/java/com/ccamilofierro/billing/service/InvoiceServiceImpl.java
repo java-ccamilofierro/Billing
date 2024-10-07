@@ -41,7 +41,10 @@ public class InvoiceServiceImpl implements InvoiceService {
         invoiceToUpdate.setCustomerName(invoice.getCustomerName());
         invoiceToUpdate.setTotalAmount(invoice.getTotalAmount());
         invoiceToUpdate.setStatus(invoice.getStatus());
-        return invoiceToUpdate;
+        invoiceToUpdate.setEmail(invoice.getEmail());
+        invoiceToUpdate.setNit(invoice.getNit());
+        invoiceToUpdate.setItems(invoice.getItems());
+        return invoiceRepository.save(invoice);
     }
 
     @Override
@@ -49,5 +52,10 @@ public class InvoiceServiceImpl implements InvoiceService {
     public void deleteInvoice(Long id) {
         Invoice invoiceToDelete = getInvoiceById(id);
         invoiceRepository.delete(invoiceToDelete);
+    }
+
+    @Override
+    public List<Invoice> getInvoicesByNit(Long nit) {
+        return invoiceRepository.findByInvoicesNit(nit);
     }
 }

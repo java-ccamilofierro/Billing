@@ -10,4 +10,5 @@ public interface InvoiceService {
     Invoice createInvoice(Invoice invoice);
     Invoice updateInvoice(Long id, Invoice invoice);
     void deleteInvoice(Long id);
+    List<Invoice> getInvoicesByNit(Long nit);
 }
