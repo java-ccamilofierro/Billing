@@ -29,6 +29,7 @@ public class InvoiceServiceImpl implements InvoiceService {
     }
 
     @Override
+    @Transactional
     public Invoice createInvoice(Invoice invoice) {
         return invoiceRepository.save(invoice);   
     }
@@ -45,6 +46,7 @@ public class InvoiceServiceImpl implements InvoiceService {
     }
 
     @Override
+    @Transactional
     public void deleteInvoice(Long id) {
         Invoice invoiceToDelete = getInvoiceById(id);
         invoiceRepository.delete(invoiceToDelete);
