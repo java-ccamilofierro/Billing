@@ -8,12 +8,14 @@ import lombok.Data;
 
 @Embeddable
 @Data
-@Schema(name = "InvoiceItem", description = "Ítem individual de una factura")
+@Schema(name = "InvoiceItem", description = "Individual item of an invoice")
 public class InvoiceItem {
-    @Schema(description = "Descripción del ítem", example = "Product A")
+    @Schema(description = "Item description", example = "Product A")
     private String description;
-    @Schema(description = "Cantidad del ítem", example = "2")
+    
+    @Schema(description = "Item quantity", example = "2")
     private int quantity;
-    @Schema(description = "Precio unitario del ítem", example = "500.00")
+    
+    @Schema(description = "Unit price of the item", example = "500.00")
     private BigDecimal unitPrice;
 }

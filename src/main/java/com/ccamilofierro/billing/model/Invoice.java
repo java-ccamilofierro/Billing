@@ -15,22 +15,22 @@ import lombok.EqualsAndHashCode;
 @Entity
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class Invoice extends Auditable{
+public class Invoice extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
-    @NotNull(message = "El NIT no puede ser nulo")
-    @Min(value = 1, message = "El NIT debe ser un número positivo")
+    @NotNull(message = "NIT cannot be null")
+    @Min(value = 1, message = "NIT must be a positive number")
     private Long nit;
 
-    @Email(message = "El email debe ser válido")
+    @Email(message = "Email must be valid")
     private String email;
     private String customerName;
 
-    @NotNull(message = "El monto total no puede ser nulo")
-    @DecimalMin(value = "0.0", inclusive = false, message = "El monto total debe ser mayor que cero")
+    @NotNull(message = "Total amount cannot be null")
+    @DecimalMin(value = "0.0", inclusive = false, message = "Total amount must be greater than zero")
     private BigDecimal totalAmount;
 
     @NotNull
@@ -41,4 +41,3 @@ public class Invoice extends Auditable{
     @CollectionTable(name = "invoice_items", joinColumns = @JoinColumn(name = "invoice_id"))
     private List<InvoiceItem> items = new ArrayList<>();
 }
-
