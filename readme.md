@@ -69,7 +69,9 @@ Examples of endpoints:
 - POST `/api/invoices`: Create a new invoice
 - PUT `/api/invoices/{id}`: Update an existing invoice
 - DELETE `/api/invoices/{id}`: Delete an invoice
-
+- GET `/api/invoices/customer/{nit}`: Retrieve invoices by NIT
+- GET `/api/invoices/amount/{amount}`: Retrieve invoices above a certain amount
+- GET `/api/invoices/date-range`: Retrieve invoices in a date range
 
 ## Project Structure
 
@@ -84,13 +86,17 @@ src
 │   │               ├── config
 │   │               │   └── SwaggerConfig.java
 │   │               ├── controller
+│   │               │   ├── InvoiceApi.java
 │   │               │   └── InvoiceController.java
 │   │               ├── exception
 │   │               │   ├── CustomExceptionHandler.java
+│   │               │   ├── ErrorDetails.java
 │   │               │   └── ResourceNotFoundException.java
 │   │               ├── model
 │   │               │   ├── Invoice.java
-│   │               │   └── InvoiceItem.java
+│   │               │   ├── InvoiceItem.java
+│   │               |   ├── InvoiceStatusEnum.java
+|   │               |   └── Auditable.java
 │   │               ├── repository
 │   │               │   └── InvoiceRepository.java
 │   │               └── service
