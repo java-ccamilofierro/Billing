@@ -39,7 +39,6 @@ public class InvoiceServiceImpl implements InvoiceService {
     public Invoice updateInvoice(Long id,Invoice invoice) {
         Invoice invoiceToUpdate = getInvoiceById(id);
         invoiceToUpdate.setCustomerName(invoice.getCustomerName());
-        invoiceToUpdate.setInvoiceDate(invoice.getInvoiceDate());
         invoiceToUpdate.setTotalAmount(invoice.getTotalAmount());
         invoiceToUpdate.setStatus(invoice.getStatus());
         return invoiceToUpdate;

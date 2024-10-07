@@ -1,20 +1,20 @@
 package com.ccamilofierro.billing.model;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Data
-public class Invoice {
+@EqualsAndHashCode(callSuper = false)
+public class Invoice extends Auditable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String customerName;
-    private LocalDate invoiceDate;
     private BigDecimal totalAmount;
 
     @Embedded
@@ -25,5 +25,4 @@ public class Invoice {
 @Data
 class InvoiceStatus {
     private String status;
-    private LocalDate lastUpdated;
 }
