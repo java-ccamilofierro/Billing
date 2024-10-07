@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/api/invoices")
-public class InvoiceController {
+public class InvoiceController implements InvoiceApi {
     @Autowired
     private InvoiceService invoiceService;
 
