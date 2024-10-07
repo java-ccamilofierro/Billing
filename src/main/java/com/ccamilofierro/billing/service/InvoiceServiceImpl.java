@@ -3,6 +3,7 @@ package com.ccamilofierro.billing.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.ccamilofierro.billing.exception.ResourceNotFoundException;
 import com.ccamilofierro.billing.model.Invoice;
@@ -10,6 +11,7 @@ import com.ccamilofierro.billing.repository.InvoiceRepository;
 
 import jakarta.transaction.Transactional;
 
+@Service
 public class InvoiceServiceImpl implements InvoiceService {
     
     @Autowired
